@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Age Calculator</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div>
+      Age 
+    </div>
     <div class="container">
-      <div class="page">
-        <h1>Welcome to the Age Calculator</h1>
-        <form id="userDetailsForm">
-          <label for="firstName">First Name:</label>
-          <input type="text" id="firstName" required /><br />
-          <label for="lastName">Last Name:</label>
-          <input type="text" id="lastName" required /><br />
-          <label for="birthdate">Birthdate:</label>
-          <input type="date" id="birthdate" required /><br />
-          <button type="submit">Next</button>
-        </form>
+      <div class="input-wrapper">
+        <input type="date" id="date-input" />
+        <button id="calc-age-btn">HIT ME</button>
       </div>
-      <div class="page" id="calculationTypePage">
-        <h2>Choose Calculation Type</h2>
-        <button id="userAgeBtn">Calculate Your Age</button>
-        <button id="customAgeBtn">Calculate Custom Age</button>
-      </div>
-      <div class="page" id="customAgePage">
-        <h2>Enter Custom Birthdate</h2>
-        <input type="date" id="customBirthdate" required /><br />
-        <button id="calculateCustomAge">Calculate Age</button>
+      <div class="output-wrapper">
+        <div>
+          <span id="years">-</span>
+          <p>Years</p>
+        </div>
+        <div>
+          <span id="months">-</span>
+          <p>Months</p>
+        </div>
+        <div>
+          <span id="days">-</span>
+          <p>Days</p>
+        </div>
       </div>
     </div>
 

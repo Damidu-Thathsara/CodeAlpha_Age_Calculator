@@ -1,42 +1,88 @@
-document
-  .getElementById("userDetailsForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    document.getElementById("calculationTypePage").style.display = "block";
-  });
-
-document.getElementById("userAgeBtn").addEventListener("click", function () {
-  // Get user details
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
-  const birthdate = new Date(document.getElementById("birthdate").value);
-
-  // Calculate age
+const ageCalculate = () => {
   const today = new Date();
-  const age = today.getFullYear() - birthdate.getFullYear();
-  const month = today.getMonth() - birthdate.getMonth();
-  if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
-    age--;
+  const inputDate = new Date(document.getElementById("date-input").value);
+
+  const birthDetails = {
+    date: inputDate.getDate(),
+    month: inputDate.getMonth() + 1,
+    year: inputDate.getFullYear(),
+  };
+
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth() + 1;
+  const currentDate = today.getDate();
+
+  if (isFutureDate(birthDetails, currentYear, currentMonth, currentDate)) {
+    alert("Not Born Yet");
+    displayResult("-", "-", "-");
+    return;
   }
 
-  // Display result
-  alert(`${firstName} ${lastName} is ${age} years old.`);
-});
-
-document.getElementById("customAgeBtn").addEventListener("click", function () {
-  const customBirthdate = prompt(
-    "Enter the birthdate (YYYY-MM-DD) for custom age calculation:"
+  const { years, months, days } = calculateAge(
+    birthDetails,
+    currentYear,
+    currentMonth,
+    currentDate
   );
-  const birthdate = new Date(customBirthdate);
 
-  // Calculate age
-  const today = new Date();
-  const age = today.getFullYear() - birthdate.getFullYear();
-  const month = today.getMonth() - birthdate.getMonth();
-  if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
-    age--;
+  displayResult(days, months, years);
+};
+
+const isFutureDate = (birthDetails, currentYear, currentMonth, currentDate) => {
+  return (
+    birthDetails.year > currentYear ||
+    (birthDetails.year === currentYear &&
+      (birthDetails.month > currentMonth ||
+        (birthDetails.month === currentMonth &&
+          birthDetails.date > currentDate)))
+  );
+};
+
+const calculateAge = (birthDetails, currentYear, currentMonth, currentDate) => {
+  let years = currentYear - birthDetails.year;
+  let months, days;
+
+  if (currentMonth < birthDetails.month) {
+    years--;
+    months = 12 - (birthDetails.month - currentMonth);
+  } else {
+    months = currentMonth - birthDetails.month;
   }
 
-  // Display result
-  alert(`The custom user is ${age} years old.`);
-});
+  if (currentDate < birthDetails.date) {
+    months--;
+    const lastMonth = currentMonth === 1 ? 12 : currentMonth - 1;
+    const daysInLastMonth = getDaysInMonth(lastMonth, currentYear);
+    days = daysInLastMonth - (birthDetails.date - currentDate);
+  } else {
+    days = currentDate - birthDetails.date;
+  }
+  return { years, months, days };
+};
+
+const getDaysInMonth = (month, year) => {
+  const isLeapYear = year % 4 === 0 && (year % 100 != 0 || year % 400 === 0);
+  const getDaysInMonth = [
+    31,
+    isLeapYear ? 29 : 28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31,
+  ];
+  return getDaysInMonth[month - 1];
+};
+
+const displayResult = (bdate, bMonth, bYear) => {
+  document.getElementById("years").textContent = bYear;
+  document.getElementById("months").textContent = bMonth;
+  document.getElementById("days").textContent = bdate;
+};
+
+document.getElementById("calc-age-btn").addEventListener("click", ageCalculate);
