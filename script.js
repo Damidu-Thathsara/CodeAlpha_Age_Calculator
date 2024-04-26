@@ -1,4 +1,5 @@
 const ageCalculate = () => {
+  document.getElementById("GeneratedTxt").textContent = "";
   const today = new Date();
   const inputDate = new Date(document.getElementById("date-input").value);
 
@@ -13,7 +14,14 @@ const ageCalculate = () => {
   const currentDate = today.getDate();
 
   if (isFutureDate(birthDetails, currentYear, currentMonth, currentDate)) {
-    alert("Not Born Yet");
+    document.getElementById("GeneratedTxt").textContent =
+      "Birthdate can not be a future date";
+    displayResult("-", "-", "-");
+    return;
+  }
+
+  if (isNaN(inputDate.getTime())) {
+    document.getElementById("GeneratedTxt").textContent = "Please Enter A Birthday to Calculate Age";
     displayResult("-", "-", "-");
     return;
   }
@@ -24,7 +32,6 @@ const ageCalculate = () => {
     currentMonth,
     currentDate
   );
-
   displayResult(days, months, years);
 };
 

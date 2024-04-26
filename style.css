@@ -5,23 +5,28 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: #862c6c;
-  height: 100%;
+  background-image: repeating-linear-gradient(#314755, #26a0da);
+  height: 100vh;
 }
 .main {
   display: flex;
   flex-direction: row;
   width: "100%";
   align-items: center;
+  transform: translate(0, 100%);
 }
-
+.empty {
+  width: 10%;
+}
 .description {
-  width: 50%;
+  width: 40%;
   color: #fffdfd;
   font-size: 1.25em;
   font-weight: 500;
   line-height: 1.5em;
   text-align: right;
+  height: 100%;
+  margin-right: 10px;
 }
 .container {
   position: relative;
@@ -61,10 +66,10 @@ button {
   width: 50%;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 .output-wrapper div {
-  height: 6.25em;
-  width: 6.25em;
+  width: 25%;
   background-color: #d4376ea5;
   border-radius: 0.31em;
   color: #f9f7f7;
@@ -76,7 +81,7 @@ button {
 
 span {
   font-size: 1.87em;
-  font-weight: 500;
+  font-weight: 800;
 }
 p {
   font-size: 0.87em;
