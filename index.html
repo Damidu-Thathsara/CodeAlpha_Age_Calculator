@@ -12,34 +12,41 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="main">
-      <div class="description">
-        <h1>Age Calculator</h1>
-        <div id="GeneratedTxt"></div>
+    <div class="all">
+      <div class="main">
+        <div class="description">
+          <h1>Age Calculator</h1>
+          <div id="GeneratedTxt"></div>
+        </div>
+        <div class="empty"></div>
+        <div class="container">
+          <div class="input-wrapper">
+            <input type="date" id="date-input" />
+            <button id="calc-age-btn">HIT ME</button>
+          </div>
+          <div class="output-wrapper">
+            <div>
+              <span id="years">-</span>
+              <p>Years</p>
+            </div>
+            <div>
+              <span id="months">-</span>
+              <p>Months</p>
+            </div>
+            <div>
+              <span id="days">-</span>
+              <p>Days</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="empty"></div>
-      <div class="container">
-        <div class="input-wrapper">
-          <input type="date" id="date-input" />
-          <button id="calc-age-btn">HIT ME</button>
-        </div>
-        <div class="output-wrapper">
-          <div>
-            <span id="years">-</span>
-            <p>Years</p>
-          </div>
-          <div>
-            <span id="months">-</span>
-            <p>Months</p>
-          </div>
-          <div>
-            <span id="days">-</span>
-            <p>Days</p>
-          </div>
-        </div>
+      <div id="howToUse">
+        <p>How to use this app:</p>
+
+        1. Enter your birthdate in the input field. 2. Click on the "HIT ME"
+        button. 3. Your age will be displayed in years, months, and days.
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

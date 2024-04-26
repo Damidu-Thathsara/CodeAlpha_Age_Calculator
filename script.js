@@ -21,7 +21,8 @@ const ageCalculate = () => {
   }
 
   if (isNaN(inputDate.getTime())) {
-    document.getElementById("GeneratedTxt").textContent = "Please Enter A Birthday to Calculate Age";
+    document.getElementById("GeneratedTxt").textContent =
+      "Please Enter A Birthday to Calculate Age";
     displayResult("-", "-", "-");
     return;
   }
