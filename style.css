@@ -6,23 +6,33 @@
 }
 body {
   background-color: #862c6c;
+  height: 100%;
 }
 .main {
   display: flex;
   flex-direction: row;
   width: "100%";
+  align-items: center;
+}
+
+.description {
+  width: 50%;
+  color: #fffdfd;
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1.5em;
+  text-align: right;
 }
 .container {
-  width: min(60%, 28.12em);
-  max-width: "50%";
   position: relative;
-  transform: translate(50%, 50%);
+  width: 50%;
 }
 .container * {
   border: none;
   outline: none;
 }
 .input-wrapper {
+  width: 50%;
   background-color: #d4376ea5;
   padding: 1.87em 1.5em;
   border-radius: 0.5em;
@@ -48,7 +58,7 @@ button {
   background-color: #f35656;
 }
 .output-wrapper {
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: space-between;
 }
