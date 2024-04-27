@@ -1,4 +1,5 @@
 const ageCalculate = () => {
+
   document.getElementById("GeneratedTxt").textContent = "";
   const today = new Date();
   const inputDate = new Date(document.getElementById("date-input").value);
@@ -27,12 +28,15 @@ const ageCalculate = () => {
     return;
   }
 
+  
+
   const { years, months, days } = calculateAge(
     birthDetails,
     currentYear,
     currentMonth,
     currentDate
   );
+
   displayResult(days, months, years);
 };
 
